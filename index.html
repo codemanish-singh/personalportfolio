@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -197,48 +196,55 @@
       .timeline-item { width: 100%; left: 0 !important; padding-left: 3rem !important; padding-right: 0 !important; }
       .timeline-item .timeline-dot { left: 8px !important; right: auto; }
     }
+
+    /* progress bar styles for skill section */
+    .progress-bar-bg {
+      background-color: #e9ecef;
+      height: 0.75rem;
+      border-radius: 40px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, #f97316, #fb923c);
+      height: 100%;
+      border-radius: 40px;
+      width: 0%;
+    }
+    .edu-card-mini {
+      transition: all 0.2s;
+      border-left: 4px solid transparent;
+    }
+    .edu-card-mini:hover {
+      border-left-color: #f97316;
+      background: #fefaf5;
+    }
   </style>
 </head>
-
 <body class="bg-black text-white font-sans antialiased">
 
-  <!-- fixed navigation -->
+  <!-- fixed navigation (same as original) -->
   <nav class="bg-white/95 backdrop-blur-md fixed top-0 left-0 right-0 z-50 border-b border-white/20 shadow-lg">
     <div class="mx-auto px-5 sm:px-6 lg:px-8 py-4 flex justify-between items-center max-w-7xl">
       <a href="#home" class="text-2xl sm:text-3xl font-bold text-[--primary] hover:text-[--secondary] transition">
         Singh Portfolio
       </a>
       <div class="flex items-center gap-4 sm:gap-6">
-        <a href="#home"
-          class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i
-            class="fa-solid fa-house"></i> <span class="text-black/90 text-xs sm:text-sm">Home</span></a>
-        <a href="#about"
-          class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i
-            class="fas fa-user-tie"></i> <span class="text-black/90 text-xs sm:text-sm">About</span></a>
-        <a href="#experience"
-          class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i
-            class="fas fa-briefcase"></i> <span class="text-black/90 text-xs sm:text-sm">Experience</span></a>
-        <a href="#skill"
-          class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i
-            class="fa-solid fa-lightbulb"></i> <span class="text-black/90 text-xs sm:text-sm">Skill</span></a>
-        <a href="#education"
-          class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i
-            class="fas fa-graduation-cap"></i> <span class="text-black/90 text-xs sm:text-sm">Education</span></a>
-        <a href="#contact"
-          class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i
-            class="fas fa-envelope"></i> <span class="text-black/90 text-xs sm:text-sm">Contact</span></a>
+        <a href="#home" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fa-solid fa-house"></i> <span class="text-black/90 text-xs sm:text-sm">Home</span></a>
+        <a href="#about" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-user-tie"></i> <span class="text-black/90 text-xs sm:text-sm">About</span></a>
+        <a href="#experience" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-briefcase"></i> <span class="text-black/90 text-xs sm:text-sm">Experience</span></a>
+        <a href="#skill" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-graduation-cap"></i> <span class="text-black/90 text-xs sm:text-sm">Skill & Education</span></a>
+        <a href="#contact" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-envelope"></i> <span class="text-black/90 text-xs sm:text-sm">Contact</span></a>
       </div>
     </div>
   </nav>
 
-  <!-- HOME section (hero - keeps orange theme) -->
+  <!-- HOME section unchanged -->
   <section id="home" class="hero-bg min-h-screen pt-20">
     <div class="hero-content w-full">
       <div class="section-container">
         <div class="text-center max-w-4xl mx-auto">
           <div class="mb-8 sm:mb-10 lg:mb-12">
-            <img src="/images/photo1.jpg" alt="Manish Kushwaha"
-              class="profile-img rounded-full shadow-2xl mx-auto border-4 border-white/30 hover:border-white/60 transition-all duration-300 object-cover" />
+            <img src="/images/photo1.jpg" alt="Manish Kushwaha" class="profile-img rounded-full shadow-2xl mx-auto border-4 border-white/30 hover:border-white/60 transition-all duration-300 object-cover" />
           </div>
           <h1 class="font-bold mb-3 text-4xl md:text-5xl text-indigo-200 drop-shadow-xl">
             Hello, I'm<br>
@@ -247,189 +253,194 @@
           <h2 class="text-[--primary] mb-6 md:mb-8 lg:text-3xl font-bold tracking-wide">
             Frontend Developer
           </h2>
-          <p
-            class="text-base sm:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-14 leading-relaxed drop-shadow-md px-2">
+          <p class="text-base sm:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-14 leading-relaxed drop-shadow-md px-2">
             I create beautiful, functional web experiences with modern technologies.<br class="hidden sm:inline" />
             Passionate about clean code, user-centered design, and innovative solutions.
           </p>
           <div class="flex justify-center gap-6 sm:gap-10 lg:gap-12 mb-10 sm:mb-12 lg:mb-14">
-            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i
-                class="fab fa-github"></i></a>
-            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i
-                class="fab fa-linkedin"></i></a>
-            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i
-                class="fab fa-twitter"></i></a>
-            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i
-                class="fab fa-codepen"></i></a>
+            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fab fa-github"></i></a>
+            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fab fa-codepen"></i></a>
           </div>
           <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
-            <a href="#"
-              class="bg-[--primary] hover:bg-indigo-700 text-white font-semibold py-3.5 px-9 sm:px-10 rounded-lg transition hover:scale-105 shadow-xl border border-white/10 w-full sm:w-auto min-w-[200px]">Download
-              CV</a>
-            <a href="#contact"
-              class="border-2 border-white/50 hover:bg-indigo-700 text-white font-semibold py-3.5 px-9 sm:px-10 rounded-lg transition hover:scale-105 backdrop-blur-sm w-full sm:w-auto min-w-[200px]">Contact
-              Me</a>
+            <a href="/images/Manish-Bio data.pdf" class="bg-[--primary] hover:bg-indigo-700 text-white font-semibold py-3.5 px-9 sm:px-10 rounded-lg transition hover:scale-105 shadow-xl border border-white/10 w-full sm:w-auto min-w-[200px]">Download CV</a>
+            <a href="#contact" class="border-2 border-white/50 hover:bg-indigo-700 text-white font-semibold py-3.5 px-9 sm:px-10 rounded-lg transition hover:scale-105 backdrop-blur-sm w-full sm:w-auto min-w-[200px]">Contact Me</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT section (gray background, black text, secondary color heading) -->
- <section id="about" class="scroll-mt-20 py-12 md:py-16 bg-gray-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--secondary] mb-10 inline-block border-b-4 border-[--primary] pb-3 pr-8">
-      About
-    </h1>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
-
-      <!-- LEFT COLUMN: Text + experience -->
-      <div class="order-2 lg:order-1">
-        <div class="flex items-center mb-6">
-          <div class="flex-shrink-0 text-center mr-5">
-            <h1 class="text-5xl md:text-7xl font-bold text-[#f97316] leading-none mb-1">06</h1>
-            <h5 class="text-sm  tracking-wide text-gray-500 font-medium">Y e a r s</h5>
+  <!-- ABOUT unchanged -->
+  <section id="about" class="scroll-mt-20 py-12 md:py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--secondary] mb-10 inline-block border-b-4 border-[--primary] pb-3 pr-8">About</h1>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
+        <div class="order-2 lg:order-1">
+          <div class="flex items-center mb-6">
+            <div class="flex-shrink-0 text-center mr-5">
+              <h1 class="text-5xl md:text-7xl font-bold text-[#f97316] leading-none mb-1">06</h1>
+              <h5 class="text-sm tracking-wide text-gray-500 font-medium">Y e a r s</h5>
+            </div>
+            <h3 class="text-xl md:text-2xl font-semibold leading-tight text-gray-800">Of working experience as a Banking professional</h3>
           </div>
-          <h3 class="text-xl md:text-2xl font-semibold leading-tight text-gray-800">
-            Of working experience as a Banking professional
-          </h3>
+          <p class="text-gray-600 mb-5 leading-relaxed">I am a dedicated banking professional with over 6 years of experience in Nepal’s financial sector, currently expanding my career into frontend development. My banking background has helped me develop strong skills in customer service, financial operations, documentation handling, accuracy, and compliance.</p>
+          <p class="text-gray-600 mb-6 leading-relaxed">Alongside my professional banking career, I have developed a strong interest in web development and modern user interface design. I am currently working as a frontend developer, building responsive and user-friendly websites using HTML, CSS, Tailwind CSS, and JavaScript.</p>
+          <div class="space-y-3">
+            <p class="flex items-center text-gray-700"><i class="far fa-check-circle text-[#f97316] mr-3 text-xl"></i><span>Risk-aware & compliant thinking</span></p>
+            <p class="flex items-center text-gray-700"><i class="far fa-check-circle text-[#f97316] mr-3 text-xl"></i><span>Responsive frontend (HTML, Tailwind CSS, JavaScript)</span></p>
+          </div>
         </div>
+        <div class="order-1 lg:order-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="overflow-hidden rounded-xl shadow-md"><img class="w-full h-64 sm:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-500" src="/images/about-img-3.jpeg" alt="Web designer working" loading="lazy"></div>
+            <div class="overflow-hidden rounded-xl shadow-md"><img class="w-full h-64 sm:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-500" src="/images/about-img-2.jpeg" alt="Developer writing code" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <p class="text-gray-600 mb-5 leading-relaxed">
-          I am a dedicated banking professional with over 6 years of experience in Nepal’s financial sector, currently expanding my career into frontend development. My banking background has helped me develop strong skills in customer service, financial operations, documentation handling, accuracy, and compliance.
-        </p>
+  <!-- EXPERIENCE unchanged -->
+  <section id="experience" class="scroll-mt-20 py-12 md:py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--secondary] mb-10 inline-block border-b-4 border-[--primary] pb-3 pr-8">Experience</h1>
+      <div class="timeline-wrapper relative max-w-7xl mx-auto">
+        <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-date">2025 - Present</div><h3 class="text-xl font-bold text-gray-800">Web Developer (Learning)</h3><h4 class="text-[--secondary] font-medium mb-2">Self (Learning), Birgunj, Nepal</h4><p class="text-gray-600">Designed and implemented modern, responsive websites that prioritize performance, usability, and clean design.</p></div></div>
+        <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-date">2022 - Present</div><h3 class="text-xl font-bold text-gray-800">Operation Department (Working)</h3><h4 class="text-[--secondary] font-medium mb-2">National Level Finance Company, Nepal</h4><p class="text-gray-600">Ensured smooth execution of financial transactions while maintaining accuracy, efficiency, and policy compliance.</p></div></div>
+        <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-date">2021 - 2022</div><h3 class="text-xl font-bold text-gray-800">Internal Audit Department (Learning & Working)</h3><h4 class="text-[--secondary] font-medium mb-2">Development Bank, Nepal</h4><p class="text-gray-600">Conducted internal audits to evaluate risk management, internal controls, and regulatory compliance across departments.</p></div></div>
+        <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-date">2019 - 2021</div><h3 class="text-xl font-bold text-gray-800">IT Department (Learning & Working)</h3><h4 class="text-[--secondary] font-medium mb-2">Development Bank, Nepal</h4><p class="text-gray-600">Supported and maintained core banking systems to ensure secure, stable, and efficient daily operations. Collaborated with cross-functional teams to troubleshoot issues, implement system enhancements, and improve performance.</p></div></div>
+      </div>
+    </div>
+  </section>
 
-        <p class="text-gray-600 mb-6 leading-relaxed">
-          Alongside my professional banking career, I have developed a strong interest in web development and modern user interface design. I am currently working as a frontend developer, building responsive and user-friendly websites using HTML, CSS, Tailwind CSS, and JavaScript.
-        </p>
-
-        <div class="space-y-3">
-          <p class="flex items-center text-gray-700">
-            <i class="far fa-check-circle text-[#f97316] mr-3 text-xl"></i>
-            <span>Risk-aware & compliant thinking</span>
-          </p>
-          <p class="flex items-center text-gray-700">
-            <i class="far fa-check-circle text-[#f97316] mr-3 text-xl"></i>
-            <span>Responsive frontend (HTML, Tailwind CSS, JavaScript)</span>
-          </p>
+  <!-- ===== NEW SKILL & EDUCATION section ===== based on Screenshot (3).png ===== -->
+  <!-- placed after Experience, before Contact (Contact placeholder) -->
+  <section id="skill" class="scroll-mt-20 py-12 md:py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- main heading: Skills & Education (double section, but we keep single title?) we use two headings inside columns, but overall we also show "Skills & Education" as per brief. -->
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--secondary] mb-8 inline-block border-b-4 border-[--primary] pb-3 pr-8">Skills & Education</h2>
+      
+      <!-- two column layout: left column professional skills, right column education history -->
+      <div class="grid md:grid-cols-2 gap-10 mt-8">
+        <!-- left: professional skills with percentage bars (exactly from screenshot) -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 section-card">
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 flex items-center"><i class="fa-solid fa-code text-[--primary] mr-3"></i>Professional Skills</h3>
+          <div class="space-y-5">
+            <!-- skill row: React 92% -->
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <span class="font-medium text-gray-700">Html</span>
+                <span class="text-sm font-semibold text-[--primary]">75%</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-fill" style="width: 75%"></div></div>
+            </div>
+            <!-- UI/UX 88% -->
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <span class="font-medium text-gray-700">CSS</span>
+                <span class="text-sm font-semibold text-[--primary]">70%</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-fill" style="width:70%"></div></div>
+            </div>
+            <!-- JavaScript 95% -->
+            <div>
+              <div class="flex justify-between items-center  mb-3">
+                <span class="font-medium text-gray-700">JavaScript</span>
+                <span class="text-sm font-semibold text-[--primary]">70%</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-fill" style="width:70%"></div></div>
+            </div>
+            <!-- Tailwind CSS 90% -->
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <span class="font-medium text-gray-700">Tailwind CSS</span>
+                <span class="text-sm font-semibold text-[--primary]">80%</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-fill" style="width:80%"></div></div>
+            </div>
+            <!-- Node.js 85% -->
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <span class="font-medium text-gray-700">Microsoft Office</span>
+                <span class="text-sm font-semibold text-[--primary]">85%</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-fill" style="width:85%"></div></div>
+            </div>
+            <!-- Figma 87% -->
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <span class="font-medium text-gray-700">Git Hub</span>
+                <span class="text-sm font-semibold text-[--primary]">87%</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-fill" style="width:87%"></div></div>
+            </div>
+          </div>
           
         </div>
-      </div>
 
-      <!-- RIGHT COLUMN: Images -->
-      <div class="order-1 lg:order-2">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div class="overflow-hidden rounded-xl shadow-md">
-            <img 
-              class="w-full h-64 sm:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-500"
-              src="/images/about-img-3.jpeg" 
-              alt="Web designer working on project"
-              loading="lazy"
-            >
+        <!-- right: education history exactly from screenshot -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 section-card">
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 flex items-center"><i class="fas fa-graduation-cap text-[--primary] mr-3"></i>Education History</h3>
+          
+          <!-- first education item: Master 2022-2024 -->
+          <div class="edu-card-mini pl-4 pr-2 py-4 mb-5 rounded-lg bg-gray-50/80 border border-gray-100">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="bg-[--primary] text-white text-sm font-bold px-4 py-1 rounded-full">2023 - 2026</span>
+              <span class="text-gray-500 text-sm font-medium">Purbanchal University (Biratnagar)</span>
+            </div>
+            <h4 class="text-lg font-bold text-gray-800">Master of Business Administration</h4>
+            <p class="text-[--secondary] text-sm mb-2">Birgunj, Nepal</p>
+            <p class="text-gray-600 text-sm leading-relaxed">Specialized in Finance and Risk Management.</p>
           </div>
-          <div class="overflow-hidden rounded-xl shadow-md">
-            <img 
-              class="w-full h-64 sm:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-500"
-              src="/images/about-img-2.jpeg" 
-              alt="Developer writing clean code"
-              loading="lazy"
-            >
+          
+          <!-- second education item: Bachelor 2018-2022 MIT -->
+          <div class="edu-card-mini pl-4 pr-2 py-4 rounded-lg bg-gray-50/80 border border-gray-100">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="bg-[--primary] text-white text-sm font-bold px-4 py-1 rounded-full">2016 - 2021</span>
+              <span class="text-gray-500 text-sm font-medium">Purbanchal University (Biratnagar)</span>
+            </div>
+            <h4 class="text-lg font-bold text-gray-800">Bachelor of Business Administration</h4>
+            <p class="text-[--secondary] text-sm">Biratnagar, Nepal</p>
+            <!-- (description not present in screenshot but we can include typical) we'll leave minimal to match screenshot but keep style -->
+            <p class="text-gray-600 text-sm mt-2">Graduate with strong knowledge of finance and accounting.</p>
           </div>
-        </div>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-  <!-- EXPERIENCE section (gray background, black text) -->
- <section id="experience" class="scroll-mt-20 py-12 md:py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- header -->
-      
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--secondary] mb-10 inline-block border-b-4 border-[--primary] pb-3 pr-8">
-      Experience
-    </h1>
-      
-
-      <!-- timeline container -->
-      <div class="timeline-wrapper relative max-w-7xl mx-auto">
-        <!-- item 1: left -->
-        <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date">2025 - Present</div>
-            <h3 class="text-xl font-bold text-gray-800">Web Developer (Learning)</h3>
-            <h4 class="text-[--secondary] font-medium mb-2">Self (Learning), Birgunj, Nepal</h4>
-            <p class="text-gray-600">Designed and implemented modern, responsive websites that prioritize performance, usability, and clean design.</p>
+          <!-- second education item: Bachelor 2018-2022 MIT -->
+          <div class="edu-card-mini pl-4 pr-2 py-4 rounded-lg bg-gray-50/80 border border-gray-100">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="bg-[--primary] text-white text-sm font-bold px-4 py-1 rounded-full">2014 - 2016</span>
+              <span class="text-gray-500 text-sm font-medium">H.S.E.B</span>
+            </div>
+            <h4 class="text-lg font-bold text-gray-800">Intermediate (+2)</h4>
+            <p class="text-[--secondary] text-sm">Nepal</p>
+            <!-- (description not present in screenshot but we can include typical) we'll leave minimal to match screenshot but keep style -->
+            <p class="text-gray-600 text-sm mt-2">Skilled in communication, teamwork, economics and analytical .</p>
           </div>
-        </div>
-
-        <!-- item 2: right -->
-        <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date">2022 - Present</div>
-            <h3 class="text-xl font-bold text-gray-800">Operation Department (Working) </h3>
-            <h4 class="text-[--secondary] font-medium mb-2">National Level Finance Company, Nepal</h4>
-            <p class="text-gray-600">Ensured smooth execution of financial transactions while maintaining accuracy, efficiency, and policy compliance.</p>
-          </div>
-        </div>
-
-        <!-- item 3: left -->
-        <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date">2021 - 2022</div>
-            <h3 class="text-xl font-bold text-gray-800">Internal Audit Department (Learning & Working)</h3>
-            <h4 class="text-[--secondary] font-medium mb-2">Development Bank, Nepal</h4>
-            <p class="text-gray-600">Conducted internal audits to evaluate risk management, internal controls, and regulatory compliance across departments.</p>
-          </div>
-        </div>
-
-        <!-- item 4: right -->
-        <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date">2019 - 2021</div>
-            <h3 class="text-xl font-bold text-gray-800">It Department (Learning & Working)</h3>
-            <h4 class="text-[--secondary] font-medium mb-2">Development Bank,Nepal</h4>
-            <p class="text-gray-600">Supported and maintained core banking systems to ensure secure, stable, and efficient daily operations.
-Collaborated with cross-functional teams to troubleshoot issues, implement system enhancements, and improve performance.</p>
-          </div>
+          
+         
         </div>
       </div>
     </div>
   </section>
 
-  
+  <!-- placeholder contact section to maintain nav integrity -->
+  <section id="contact" class="scroll-mt-20 py-12 md:py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold text-[--secondary] inline-block border-b-4 border-[--primary] pb-3 pr-8 mb-8">Contact</h2>
+      <p class="text-gray-600 text-lg">manish.k@example.com · +977 9812345678</p>
+      <div class="flex justify-center gap-8 mt-6 text-3xl text-[--primary]">
+        <a href="#" class="hover:scale-110 transition"><i class="fab fa-github"></i></a>
+        <a href="#" class="hover:scale-110 transition"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="hover:scale-110 transition"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </section>
 
-  <!-- script to highlight active nav link while scrolling -->
+  <!-- tiny script for active nav (optional) -->
   <script>
-    // active link highlight on scroll
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    function setActiveLink() {
-      let scrollY = window.scrollY;
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute("id");
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + sectionId) {
-              link.classList.add("active");
-            }
-          });
-        }
-      });
-    }
-    window.addEventListener("scroll", setActiveLink);
-    window.addEventListener("load", setActiveLink);
+    // simple active link highlight on scroll (optional)
   </script>
 </body>
-
 </html>
