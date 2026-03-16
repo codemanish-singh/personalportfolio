@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manish Kushwaha · scroll portfolio</title>
+  <title>Manish-portfolio · refined mobile</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -125,7 +125,7 @@
       justify-content: center;
     }
 
-    /* timeline custom styling */
+    /* timeline custom styling (unchanged) */
     .timeline-wrapper {
       position: relative;
     }
@@ -197,7 +197,7 @@
       .timeline-item .timeline-dot { left: 8px !important; right: auto; }
     }
 
-    /* progress bar styles for skill section */
+    /* progress bar styles */
     .progress-bar-bg {
       background-color: #e9ecef;
       height: 0.75rem;
@@ -218,27 +218,81 @@
       border-left-color: #f97316;
       background: #fefaf5;
     }
+
+    /* mobile menu animation */
+    .mobile-menu {
+      transition: transform 0.3s ease-in-out, opacity 0.2s;
+      transform-origin: top;
+    }
+    .mobile-menu.hidden {
+      display: none;
+    }
+    
+    /* force skill cards to have consistent height on desktop */
+    @media (min-width: 768px) {
+      .skill-grid-cards {
+        grid-auto-rows: 1fr;
+      }
+      .skill-grid-cards > div {
+        height: fit-content;
+        min-height: 100%;
+      }
+    }
+    /* for mobile, make both cards stretch full width naturally */
+    .skill-education-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .skill-education-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: stretch;
+      }
+      .skill-education-wrapper > div {
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body class="bg-black text-white font-sans antialiased">
 
-  <!-- fixed navigation (same as original) -->
+  <!-- ===== responsive navigation with hamburger ===== -->
   <nav class="bg-white/95 backdrop-blur-md fixed top-0 left-0 right-0 z-50 border-b border-white/20 shadow-lg">
-    <div class="mx-auto px-5 sm:px-6 lg:px-8 py-4 flex justify-between items-center max-w-7xl">
-      <a href="#home" class="text-2xl sm:text-3xl font-bold text-[--primary] hover:text-[--secondary] transition">
-        Singh Portfolio
-      </a>
-      <div class="flex items-center gap-4 sm:gap-6">
-        <a href="#home" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fa-solid fa-house"></i> <span class="text-black/90 text-xs sm:text-sm">Home</span></a>
-        <a href="#about" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-user-tie"></i> <span class="text-black/90 text-xs sm:text-sm">About</span></a>
-        <a href="#experience" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-briefcase"></i> <span class="text-black/90 text-xs sm:text-sm">Experience</span></a>
-        <a href="#skill" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-graduation-cap"></i> <span class="text-black/90 text-xs sm:text-sm">Skill & Education</span></a>
-        <a href="#contact" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-envelope"></i> <span class="text-black/90 text-xs sm:text-sm">Contact</span></a>
+    <div class="mx-auto px-5 sm:px-6 lg:px-8 py-4 max-w-7xl">
+      <div class="flex justify-between items-center">
+        <!-- logo -->
+        <a href="#home" class="text-2xl sm:text-3xl font-bold text-[--primary] hover:text-[--secondary] transition">
+          Singh Portfolio
+        </a>
+
+        <!-- desktop menu (hidden on mobile) -->
+        <div class="hidden md:flex items-center gap-4 sm:gap-6">
+          <a href="#home" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fa-solid fa-house"></i> <span class="text-black/90 text-xs sm:text-sm">Home</span></a>
+          <a href="#about" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-user-tie"></i> <span class="text-black/90 text-xs sm:text-sm">About</span></a>
+          <a href="#experience" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-briefcase"></i> <span class="text-black/90 text-xs sm:text-sm">Experience</span></a>
+          <a href="#skill" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-graduation-cap"></i> <span class="text-black/90 text-xs sm:text-sm">Skill & Education</span></a>
+          <a href="#contact" class="flex flex-col items-center nav-link text-[--primary] hover:text-[--secondary] font-medium transition text-sm sm:text-base"><i class="fas fa-envelope"></i> <span class="text-black/90 text-xs sm:text-sm">Contact</span></a>
+        </div>
+
+        <!-- hamburger button (visible only on mobile) -->
+        <button id="menuToggle" class="md:hidden text-3xl text-[--primary] focus:outline-none">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- mobile dropdown menu (hidden by default) -->
+      <div id="mobileMenu" class="mobile-menu hidden md:hidden mt-4 pb-3 flex flex-col items-center gap-4 bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-gray-200 shadow-xl">
+        <a href="#home" class="flex items-center gap-3 nav-link text-[--primary] hover:text-[--secondary] font-medium text-base w-full px-4 py-2 hover:bg-orange-50 rounded-lg" onclick="closeMenu()"><i class="fa-solid fa-house w-6"></i> Home</a>
+        <a href="#about" class="flex items-center gap-3 nav-link text-[--primary] hover:text-[--secondary] font-medium text-base w-full px-4 py-2 hover:bg-orange-50 rounded-lg" onclick="closeMenu()"><i class="fas fa-user-tie w-6"></i> About</a>
+        <a href="#experience" class="flex items-center gap-3 nav-link text-[--primary] hover:text-[--secondary] font-medium text-base w-full px-4 py-2 hover:bg-orange-50 rounded-lg" onclick="closeMenu()"><i class="fas fa-briefcase w-6"></i> Experience</a>
+        <a href="#skill" class="flex items-center gap-3 nav-link text-[--primary] hover:text-[--secondary] font-medium text-base w-full px-4 py-2 hover:bg-orange-50 rounded-lg" onclick="closeMenu()"><i class="fas fa-graduation-cap w-6"></i> Skill & Education</a>
+        <a href="#contact" class="flex items-center gap-3 nav-link text-[--primary] hover:text-[--secondary] font-medium text-base w-full px-4 py-2 hover:bg-orange-50 rounded-lg" onclick="closeMenu()"><i class="fas fa-envelope w-6"></i> Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- HOME section unchanged -->
+  <!-- HOME unchanged -->
   <section id="home" class="hero-bg min-h-screen pt-20">
     <div class="hero-content w-full">
       <div class="section-container">
@@ -246,11 +300,11 @@
           <div class="mb-8 sm:mb-10 lg:mb-12">
             <img src="/images/photo1.jpg" alt="Manish Kushwaha" class="profile-img rounded-full shadow-2xl mx-auto border-4 border-white/30 hover:border-white/60 transition-all duration-300 object-cover" />
           </div>
-          <h1 class="font-bold mb-3 text-4xl md:text-5xl text-indigo-200 drop-shadow-xl">
+          <h1 class="font-bold mb-3 text-3xl md:text-5xl text-indigo-200 drop-shadow-xl">
             Hello, I'm<br>
-            <span class="typewriter text-5xl md:text-6xl">Manish Kushwaha</span>
+            <span class="typewriter text-4xl md:text-6xl">Manish Kushwaha</span>
           </h1>
-          <h2 class="text-[--primary] mb-6 md:mb-8 lg:text-3xl font-bold tracking-wide">
+          <h2 class="text-[--primary] text-2xl mb-6 md:mb-8 lg:text-4xl font-bold tracking-wide">
             Frontend Developer
           </h2>
           <p class="text-base sm:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-14 leading-relaxed drop-shadow-md px-2">
@@ -258,25 +312,33 @@
             Passionate about clean code, user-centered design, and innovative solutions.
           </p>
           <div class="flex justify-center gap-6 sm:gap-10 lg:gap-12 mb-10 sm:mb-12 lg:mb-14">
-            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fab fa-github"></i></a>
-            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fab fa-codepen"></i></a>
+            <a href="https://wa.me/9779746564240" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fa-brands fa-square-whatsapp"></i></a>
+            <a href="mailto:singhmanish1109@gmail.com" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/codemanish-singh" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="text-3xl sm:text-4xl text-white/80 hover:text-white transition hover:scale-110"><i class="fa-brands fa-linkedin"></i></a>
           </div>
           <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
             <a href="/images/Manish-Bio data.pdf" class="bg-[--primary] hover:bg-indigo-700 text-white font-semibold py-3.5 px-9 sm:px-10 rounded-lg transition hover:scale-105 shadow-xl border border-white/10 w-full sm:w-auto min-w-[200px]">Download CV</a>
-            <a href="#contact" class="border-2 border-white/50 hover:bg-indigo-700 text-white font-semibold py-3.5 px-9 sm:px-10 rounded-lg transition hover:scale-105 backdrop-blur-sm w-full sm:w-auto min-w-[200px]">Contact Me</a>
+            <a href="tel:+9779746564240" class="border-2 border-white/50 hover:bg-indigo-700 text-white font-semibold py-3.5 px-9 sm:px-10 rounded-lg transition hover:scale-105 backdrop-blur-sm w-full sm:w-auto min-w-[200px]">Contact Me</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT unchanged -->
+  <!-- ABOUT section – images come FIRST on mobile (order-1) and text second (order-2), but on desktop we use order-1 for text and order-2 for images? Let's set: mobile images top, text bottom; desktop text left, images right. -->
   <section id="about" class="scroll-mt-20 py-12 md:py-16 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--secondary] mb-10 inline-block border-b-4 border-[--primary] pb-3 pr-8">About</h1>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
+        <!-- images column: show first on mobile (order-1) -->
+        <div class="order-1 lg:order-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="overflow-hidden rounded-xl shadow-md"><img class="w-full h-64 sm:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-500" src="/images/about-img-3.jpeg" alt="Web designer working" loading="lazy"></div>
+            <div class="overflow-hidden rounded-xl shadow-md"><img class="w-full h-64 sm:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-500" src="/images/about-img-2.jpeg" alt="Developer writing code" loading="lazy"></div>
+          </div>
+        </div>
+        <!-- text column: second on mobile (order-2), but on desktop we want it left: lg:order-1 -->
         <div class="order-2 lg:order-1">
           <div class="flex items-center mb-6">
             <div class="flex-shrink-0 text-center mr-5">
@@ -290,12 +352,6 @@
           <div class="space-y-3">
             <p class="flex items-center text-gray-700"><i class="far fa-check-circle text-[#f97316] mr-3 text-xl"></i><span>Risk-aware & compliant thinking</span></p>
             <p class="flex items-center text-gray-700"><i class="far fa-check-circle text-[#f97316] mr-3 text-xl"></i><span>Responsive frontend (HTML, Tailwind CSS, JavaScript)</span></p>
-          </div>
-        </div>
-        <div class="order-1 lg:order-2">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="overflow-hidden rounded-xl shadow-md"><img class="w-full h-64 sm:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-500" src="/images/about-img-3.jpeg" alt="Web designer working" loading="lazy"></div>
-            <div class="overflow-hidden rounded-xl shadow-md"><img class="w-full h-64 sm:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-500" src="/images/about-img-2.jpeg" alt="Developer writing code" loading="lazy"></div>
           </div>
         </div>
       </div>
@@ -315,132 +371,117 @@
     </div>
   </section>
 
-  <!-- ===== NEW SKILL & EDUCATION section ===== based on Screenshot (3).png ===== -->
-  <!-- placed after Experience, before Contact (Contact placeholder) -->
+  <!-- ===== SKILL & EDUCATION – now using .skill-education-wrapper for equal height ===== -->
   <section id="skill" class="scroll-mt-20 py-12 md:py-16 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- main heading: Skills & Education (double section, but we keep single title?) we use two headings inside columns, but overall we also show "Skills & Education" as per brief. -->
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--secondary] mb-8 inline-block border-b-4 border-[--primary] pb-3 pr-8">Skills & Education</h2>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--secondary] mb-10 inline-block border-b-4 border-[--primary] pb-3 pr-8">Skills & Education</h1>
       
-      <!-- two column layout: left column professional skills, right column education history -->
-      <div class="grid md:grid-cols-2 gap-10 mt-8">
-        <!-- left: professional skills with percentage bars (exactly from screenshot) -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 section-card">
+      <!-- grid wrapper with stretch behaviour -->
+      <div class="skill-education-wrapper mt-8">
+        <!-- left: professional skills card -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 section-card h-full flex flex-col">
           <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 flex items-center"><i class="fa-solid fa-code text-[--primary] mr-3"></i>Professional Skills</h3>
-          <div class="space-y-5">
-            <!-- skill row: React 92% -->
-            <div>
-              <div class="flex justify-between items-center mb-3">
-                <span class="font-medium text-gray-700">Html</span>
-                <span class="text-sm font-semibold text-[--primary]">75%</span>
-              </div>
-              <div class="progress-bar-bg"><div class="progress-fill" style="width: 75%"></div></div>
-            </div>
-            <!-- UI/UX 88% -->
-            <div>
-              <div class="flex justify-between items-center mb-3">
-                <span class="font-medium text-gray-700">CSS</span>
-                <span class="text-sm font-semibold text-[--primary]">70%</span>
-              </div>
-              <div class="progress-bar-bg"><div class="progress-fill" style="width:70%"></div></div>
-            </div>
-            <!-- JavaScript 95% -->
-            <div>
-              <div class="flex justify-between items-center  mb-3">
-                <span class="font-medium text-gray-700">JavaScript</span>
-                <span class="text-sm font-semibold text-[--primary]">70%</span>
-              </div>
-              <div class="progress-bar-bg"><div class="progress-fill" style="width:70%"></div></div>
-            </div>
-            <!-- Tailwind CSS 90% -->
-            <div>
-              <div class="flex justify-between items-center mb-3">
-                <span class="font-medium text-gray-700">Tailwind CSS</span>
-                <span class="text-sm font-semibold text-[--primary]">80%</span>
-              </div>
-              <div class="progress-bar-bg"><div class="progress-fill" style="width:80%"></div></div>
-            </div>
-            <!-- Node.js 85% -->
-            <div>
-              <div class="flex justify-between items-center mb-3">
-                <span class="font-medium text-gray-700">Microsoft Office</span>
-                <span class="text-sm font-semibold text-[--primary]">85%</span>
-              </div>
-              <div class="progress-bar-bg"><div class="progress-fill" style="width:85%"></div></div>
-            </div>
-            <!-- Figma 87% -->
-            <div>
-              <div class="flex justify-between items-center mb-3">
-                <span class="font-medium text-gray-700">Git Hub</span>
-                <span class="text-sm font-semibold text-[--primary]">87%</span>
-              </div>
-              <div class="progress-bar-bg"><div class="progress-fill" style="width:87%"></div></div>
-            </div>
+          <div class="space-y-5 flex-grow">
+            <div><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-700">Html</span><span class="text-sm font-semibold text-[--primary]">75%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 75%"></div></div></div>
+            <div><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-700">CSS</span><span class="text-sm font-semibold text-[--primary]">70%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:70%"></div></div></div>
+            <div><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-700">JavaScript</span><span class="text-sm font-semibold text-[--primary]">70%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:70%"></div></div></div>
+            <div><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-700">Tailwind CSS</span><span class="text-sm font-semibold text-[--primary]">80%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:80%"></div></div></div>
+            <div><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-700">Microsoft Office</span><span class="text-sm font-semibold text-[--primary]">85%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:85%"></div></div></div>
+            <div><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-700">Git Hub</span><span class="text-sm font-semibold text-[--primary]">87%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:87%"></div></div></div>
           </div>
-          
         </div>
 
-        <!-- right: education history exactly from screenshot -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 section-card">
+        <!-- right: education history card -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 section-card h-full flex flex-col">
           <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 flex items-center"><i class="fas fa-graduation-cap text-[--primary] mr-3"></i>Education History</h3>
-          
-          <!-- first education item: Master 2022-2024 -->
-          <div class="edu-card-mini pl-4 pr-2 py-4 mb-5 rounded-lg bg-gray-50/80 border border-gray-100">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="bg-[--primary] text-white text-sm font-bold px-4 py-1 rounded-full">2023 - 2026</span>
-              <span class="text-gray-500 text-sm font-medium">Purbanchal University (Biratnagar)</span>
+          <div class="flex-grow space-y-4">
+            <div class="edu-card-mini pl-4 pr-2 py-4 rounded-lg bg-gray-50/80 border border-gray-100">
+              <div class="flex flex-wrap items-center gap-2 mb-2"><span class="bg-[--primary] text-white text-sm font-bold px-4 py-1 rounded-full">2023 - 2026</span><span class="text-gray-500 text-sm font-medium">Purbanchal University</span></div>
+              <h4 class="text-lg font-bold text-gray-800">Master of Business Administration</h4>
+              <p class="text-[--secondary] text-sm mb-2">Birgunj, Nepal</p>
+              <p class="text-gray-600 text-sm leading-relaxed">Specialized in Finance and Risk Management.</p>
             </div>
-            <h4 class="text-lg font-bold text-gray-800">Master of Business Administration</h4>
-            <p class="text-[--secondary] text-sm mb-2">Birgunj, Nepal</p>
-            <p class="text-gray-600 text-sm leading-relaxed">Specialized in Finance and Risk Management.</p>
-          </div>
-          
-          <!-- second education item: Bachelor 2018-2022 MIT -->
-          <div class="edu-card-mini pl-4 pr-2 py-4 rounded-lg bg-gray-50/80 border border-gray-100">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="bg-[--primary] text-white text-sm font-bold px-4 py-1 rounded-full">2016 - 2021</span>
-              <span class="text-gray-500 text-sm font-medium">Purbanchal University (Biratnagar)</span>
+            
+            <div class="edu-card-mini pl-4 pr-2 py-4 rounded-lg bg-gray-50/80 border border-gray-100">
+              <div class="flex flex-wrap items-center gap-2 mb-2"><span class="bg-[--primary] text-white text-sm font-bold px-4 py-1 rounded-full">2016 - 2021</span><span class="text-gray-500 text-sm font-medium">Purbanchal University</span></div>
+              <h4 class="text-lg font-bold text-gray-800">Bachelor of Business Administration</h4>
+              <p class="text-[--secondary] text-sm">Biratnagar, Nepal</p>
+              <p class="text-gray-600 text-sm mt-2">Graduate with strong knowledge of finance and accounting.</p>
             </div>
-            <h4 class="text-lg font-bold text-gray-800">Bachelor of Business Administration</h4>
-            <p class="text-[--secondary] text-sm">Biratnagar, Nepal</p>
-            <!-- (description not present in screenshot but we can include typical) we'll leave minimal to match screenshot but keep style -->
-            <p class="text-gray-600 text-sm mt-2">Graduate with strong knowledge of finance and accounting.</p>
-          </div>
 
-          <!-- second education item: Bachelor 2018-2022 MIT -->
-          <div class="edu-card-mini pl-4 pr-2 py-4 rounded-lg bg-gray-50/80 border border-gray-100">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="bg-[--primary] text-white text-sm font-bold px-4 py-1 rounded-full">2014 - 2016</span>
-              <span class="text-gray-500 text-sm font-medium">H.S.E.B</span>
+            <div class="edu-card-mini pl-4 pr-2 py-4 rounded-lg bg-gray-50/80 border border-gray-100">
+              <div class="flex flex-wrap items-center gap-2 mb-2"><span class="bg-[--primary] text-white text-sm font-bold px-4 py-1 rounded-full">2014 - 2016</span><span class="text-gray-500 text-sm font-medium">H.S.E.B</span></div>
+              <h4 class="text-lg font-bold text-gray-800">Intermediate (+2)</h4>
+              <p class="text-[--secondary] text-sm">Nepal</p>
+              <p class="text-gray-600 text-sm mt-2">Skilled in communication, teamwork, economics.</p>
             </div>
-            <h4 class="text-lg font-bold text-gray-800">Intermediate (+2)</h4>
-            <p class="text-[--secondary] text-sm">Nepal</p>
-            <!-- (description not present in screenshot but we can include typical) we'll leave minimal to match screenshot but keep style -->
-            <p class="text-gray-600 text-sm mt-2">Skilled in communication, teamwork, economics and analytical .</p>
           </div>
-          
-         
         </div>
       </div>
     </div>
   </section>
 
-  <!-- placeholder contact section to maintain nav integrity -->
-  <section id="contact" class="scroll-mt-20 py-12 md:py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold text-[--secondary] inline-block border-b-4 border-[--primary] pb-3 pr-8 mb-8">Contact</h2>
-      <p class="text-gray-600 text-lg">manish.k@example.com · +977 9812345678</p>
-      <div class="flex justify-center gap-8 mt-6 text-3xl text-[--primary]">
-        <a href="#" class="hover:scale-110 transition"><i class="fab fa-github"></i></a>
-        <a href="#" class="hover:scale-110 transition"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="hover:scale-110 transition"><i class="fab fa-twitter"></i></a>
+  <!-- CONTACT section – unchanged -->
+  <section id="contact" class="scroll-mt-20 py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--secondary] mb-10 inline-block border-b-4 border-[--primary] pb-3 pr-8">Contact</h1>
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12 bg-gray-100 rounded-3xl shadow-xl overflow-hidden border border-gray-200">
+        <!-- left form -->
+        <div class="p-6 md:p-8 lg:p-10">
+          <form id="contact-form">
+            <div class="mb-5"><label class="block text-gray-700 font-medium mb-2 text-md">Name</label><input type="text" placeholder="your full name" class="w-full p-3 border border-gray-300 rounded-lg form-input text-gray-400 bg-gray-50" value="your full name"></div>
+            <div class="mb-5"><label class="block text-gray-700 font-medium mb-2 text-md">Email</label><input type="email" placeholder="abc@gmail.com" class="w-full p-3 border border-gray-300 rounded-lg form-input text-gray-400 bg-gray-50" value="abc@gmail.com"></div>
+            <div class="mb-5"><label class="block text-gray-700 font-medium mb-2 text-md">Subject</label><input type="text" placeholder="Project inquiry" class="w-full p-3 border border-gray-300 rounded-lg form-input text-gray-400 bg-gray-50" value="Project inquiry"></div>
+            <div class="mb-3"><label class="block text-gray-700 font-medium mb-2 text-md">Message</label><textarea rows="4" placeholder="Tell me about your project..." class="w-full p-3 border border-gray-300 rounded-lg form-input text-gray-400 bg-gray-50 resize-none">Tell me about your project...</textarea></div>
+            <div class="text-right text-sm text-gray-400 mb-6">Maximum 500 characters</div>
+            <button type="submit" class="w-full md:w-auto bg-[--primary] hover:bg-orange-600 text-white font-semibold py-3 px-10 rounded-xl transition shadow-md hover:shadow-lg">Send message</button>
+          </form>
+        </div>
+        <!-- right info -->
+        <div class="bg-gradient-to-br from-orange-50 to-white p-6 md:p-8 lg:p-10 flex flex-col justify-between">
+          <div><h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Let's Work Together</h3><p class="text-gray-600 text-lg mb-8">Have a project in mind? I'd love to hear about it. Send me a message and let's create something amazing together.</p>
+            <div class="space-y-5">
+              <div class="flex items-center gap-4"><div class="contact-icon text-[--primary] hover:text-[--secondary]"><i class="fa-regular fa-envelope"></i></div><span class="text-gray-800 text-base">singhmanish1109@gmail.com</span></div>
+              <div class="flex items-center gap-4"><div class="contact-icon text-[--primary] hover:text-[--secondary]"><i class="fa-solid fa-phone"></i></div><span class="text-gray-800 text-base">+977 9746564240</span></div>
+              <div class="flex items-center gap-4"><div class="contact-icon text-[--primary] hover:text-[--secondary]"><i class="fa-solid fa-location-dot"></i></div><span class="text-gray-800 text-base">Bigrunj, Nepal</span></div>
+            </div>
+          </div>
+          <div class="mt-10 pt-4 border-t border-gray-200 flex gap-5 text-2xl text-[--primary]"><a href="#" class="hover:scale-110 transition"><i class="fab fa-github"></i></a><a href="#" class="hover:scale-110 transition"><i class="fab fa-linkedin-in"></i></a><a href="#" class="hover:scale-110 transition"><i class="fab fa-x-twitter"></i></a></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- tiny script for active nav (optional) -->
+  <footer class="relative bg-gray-100 text-white py-8 px-4 text-center">
+    <a href="#home" class="inline-block text-3xl font-bold text-[--primary] text-sm">
+      &copy;2026 - Manish Kushwaha | All Rights Reserved.
+    </a>
+  </footer>
+
+  <!-- simple script for hamburger menu -->
   <script>
-    // simple active link highlight on scroll (optional)
+    const toggleBtn = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      const menuLinks = mobileMenu.querySelectorAll('a');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+
+      document.addEventListener('click', function(event) {
+        if (!mobileMenu.contains(event.target) && !toggleBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    }
   </script>
 </body>
 </html>
